@@ -1,1 +1,3 @@
-### Link your theory in here
+To simulate the interfacing of multiple sensors (Ultrasonic sensor, PIR sensor, DHT sensor, Soil Moisture sensor, and MQ135 sensor) with an Arduino, the objective is to monitor environmental parameters and detect motion. The Ultrasonic sensor measures distance by emitting sound waves and measuring their return time. 
+
+The PIR sensor detects motion by sensing infrared radiation changes, ideal for security systems. The DHT sensor monitors temperature and humidity in the environment. The Soil Moisture sensor measures soil's water content, making it useful for agricultural applications. Lastly, the MQ135 sensor detects air quality, particularly gases like CO2, useful for pollution monitoring.
