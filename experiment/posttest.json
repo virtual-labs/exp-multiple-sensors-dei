@@ -2,37 +2,88 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "Which sensor is commonly used to measure the distance to an object in Arduino projects?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "PIR Sensor",
+        "b": "DHT Sensor",
+        "c": "Ultrasonic Sensor",
+        "d": "Soil Moisture Sensor"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "PIR sensors are used for motion detection, not for measuring distances.",
+        "b": "DHT sensors are used to measure temperature and humidity, not distance.",
+        "c": "Ultrasonic sensors are commonly used for measuring the distance to an object by emitting sound waves.",
+        "d": "Soil Moisture sensors measure the moisture level in the soil, not distance."
       },
-      "correctAnswer": "a",
+      "correctAnswer": "c",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "Which sensor is primarily used for detecting motion in Arduino projects?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "MQ135 Sensor",
+        "b": "PIR Sensor",
+        "c": "Soil Moisture Sensor",
+        "d": "Ultrasonic Sensor"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "MQ135 is used for air quality detection, not for motion detection.",
+        "b": "PIR sensors are specifically designed to detect motion by sensing infrared radiation.",
+        "c": "Soil Moisture sensors detect soil moisture levels, not motion.",
+        "d": "Ultrasonic sensors are used for measuring distances, not for detecting motion."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What is the primary purpose of the DHT sensor in Arduino projects?",
+      "answers": {
+        "a": "To measure distance",
+        "b": "To measure air quality",
+        "c": "To measure temperature and humidity",
+        "d": "To detect motion"
+      },
+      "explanations": {
+        "a": "DHT sensors do not measure distance, they measure temperature and humidity.",
+        "b": "DHT sensors are not used to measure air quality; MQ135 sensors are used for that purpose.",
+        "c": "DHT sensors are designed to measure both temperature and humidity in the environment.",
+        "d": "Motion detection is typically handled by PIR sensors, not DHT sensors."
       },
       "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which sensor can be used to measure soil moisture levels in an Arduino-based garden monitoring system?",
+      "answers": {
+        "a": "MQ135 Sensor",
+        "b": "Soil Moisture Sensor",
+        "c": "Ultrasonic Sensor",
+        "d": "PIR Sensor"
+      },
+      "explanations": {
+        "a": "MQ135 sensors are used to detect air quality, not soil moisture.",
+        "b": "Soil Moisture sensors are specifically designed to measure the moisture content of soil in gardening systems.",
+        "c": "Ultrasonic sensors measure distance, not soil moisture.",
+        "d": "PIR sensors detect motion, not soil moisture."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which sensor is used to detect air quality, specifically the presence of gases like CO2, in Arduino projects?",
+      "answers": {
+        "a": "DHT Sensor",
+        "b": "MQ135 Sensor",
+        "c": "Ultrasonic Sensor",
+        "d": "Soil Moisture Sensor"
+      },
+      "explanations": {
+        "a": "DHT sensors measure temperature and humidity, not air quality.",
+        "b": "MQ135 sensors are designed to detect air quality and gases like CO2, ammonia, and alcohol.",
+        "c": "Ultrasonic sensors measure distance, not air quality.",
+        "d": "Soil Moisture sensors are used for detecting soil moisture, not air quality."
+      },
+      "correctAnswer": "b",
       "difficulty": "beginner"
     }
   ]

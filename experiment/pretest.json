@@ -2,37 +2,37 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "Which sensor is used to measure the distance to an object in Arduino projects?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "PIR Sensor",
+        "b": "DHT Sensor",
+        "c": "Ultrasonic Sensor",
+        "d": "Soil Moisture Sensor"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "PIR sensors are used for motion detection, not for measuring distances.",
+        "b": "DHT sensors measure temperature and humidity, not distance.",
+        "c": "Ultrasonic sensors are used to measure the distance to an object by emitting sound waves.",
+        "d": "Soil Moisture sensors measure the moisture level in the soil, not distance."
       },
-      "correctAnswer": "a",
+      "correctAnswer": "c",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "Which sensor is used for detecting motion in Arduino projects?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "MQ135 Sensor",
+        "b": "PIR Sensor",
+        "c": "Soil Moisture Sensor",
+        "d": "Ultrasonic Sensor"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "MQ135 is used for air quality detection, not for motion detection.",
+        "b": "PIR sensors are specifically designed to detect motion by sensing infrared radiation.",
+        "c": "Soil Moisture sensors detect soil moisture levels, not motion.",
+        "d": "Ultrasonic sensors are used for measuring distances, not for detecting motion."
       },
-      "correctAnswer": "c",
+      "correctAnswer": "b",
       "difficulty": "beginner"
     }
   ]
