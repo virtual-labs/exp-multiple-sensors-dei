@@ -1,0 +1,33 @@
+int Sensor = 0;
+int data = 0; 
+
+void setup(){
+  pinMode(A0, INPUT);
+  pinMode(9, OUTPUT);
+  pinMode(10, OUTPUT);
+  pinMode(11, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop(){
+  Sensor = analogRead(A0);
+  data = map(Sensor,0, 1023, 0, 255);
+  Serial.println(data);
+  
+  if (data < 60){
+   	digitalWrite(9,0);
+    digitalWrite(10,0);
+    digitalWrite(11,1);
+  }
+  
+  if (data > 60 && data < 150){
+    digitalWrite(9,0);
+    digitalWrite(10,1);
+    digitalWrite(11,0);
+  }
+  if (data > 150){
+   	digitalWrite(9,1);
+    digitalWrite(10,0);
+    digitalWrite(11,0);
+  }
+}
