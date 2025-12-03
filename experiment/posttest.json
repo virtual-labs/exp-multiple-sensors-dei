@@ -2,89 +2,174 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "Which sensor is commonly used to measure the distance to an object in Arduino projects?",
+      "question": "How do ultrasonic sensors measure distance?",
       "answers": {
-        "a": "PIR Sensor",
-        "b": "DHT Sensor",
-        "c": "Ultrasonic Sensor",
-        "d": "Soil Moisture Sensor"
+        "a": "By detecting heat from objects",
+        "b": "By measuring time taken for sound waves to return",
+        "c": "By reading infrared radiation",
+        "d": "By using GPS signals"
       },
       "explanations": {
-        "a": "PIR sensors are used for motion detection, not for measuring distances.",
-        "b": "DHT sensors are used to measure temperature and humidity, not distance.",
-        "c": "Ultrasonic sensors are commonly used for measuring the distance to an object by emitting sound waves.",
-        "d": "Soil Moisture sensors measure the moisture level in the soil, not distance."
-      },
-      "correctAnswer": "c",
-      "difficulty": "beginner"
-    },
-    {
-      "question": "Which sensor is primarily used for detecting motion in Arduino projects?",
-      "answers": {
-        "a": "MQ135 Sensor",
-        "b": "PIR Sensor",
-        "c": "Soil Moisture Sensor",
-        "d": "Ultrasonic Sensor"
-      },
-      "explanations": {
-        "a": "MQ135 is used for air quality detection, not for motion detection.",
-        "b": "PIR sensors are specifically designed to detect motion by sensing infrared radiation.",
-        "c": "Soil Moisture sensors detect soil moisture levels, not motion.",
-        "d": "Ultrasonic sensors are used for measuring distances, not for detecting motion."
+        "a": "Incorrect: Heat detection is used by PIR sensors.",
+        "b": "Correct: Ultrasonic sensors calculate distance using echo time.",
+        "c": "Incorrect: IR sensors use infrared, not ultrasonic.",
+        "d": "Incorrect: GPS cannot measure object distance."
       },
       "correctAnswer": "b",
-      "difficulty": "beginner"
+      "difficulty": "intermediate"
     },
     {
-      "question": "What is the primary purpose of the DHT sensor in Arduino projects?",
+      "question": "Why does a PIR sensor sometimes give false triggers?",
       "answers": {
-        "a": "To measure distance",
-        "b": "To measure air quality",
-        "c": "To measure temperature and humidity",
-        "d": "To detect motion"
+        "a": "Because it uses sound waves",
+        "b": "Due to sudden temperature changes or noise",
+        "c": "Because it detects magnetic fields",
+        "d": "Because it requires constant calibration"
       },
       "explanations": {
-        "a": "DHT sensors do not measure distance, they measure temperature and humidity.",
-        "b": "DHT sensors are not used to measure air quality; MQ135 sensors are used for that purpose.",
-        "c": "DHT sensors are designed to measure both temperature and humidity in the environment.",
-        "d": "Motion detection is typically handled by PIR sensors, not DHT sensors."
-      },
-      "correctAnswer": "c",
-      "difficulty": "beginner"
-    },
-    {
-      "question": "Which sensor can be used to measure soil moisture levels in an Arduino-based garden monitoring system?",
-      "answers": {
-        "a": "MQ135 Sensor",
-        "b": "Soil Moisture Sensor",
-        "c": "Ultrasonic Sensor",
-        "d": "PIR Sensor"
-      },
-      "explanations": {
-        "a": "MQ135 sensors are used to detect air quality, not soil moisture.",
-        "b": "Soil Moisture sensors are specifically designed to measure the moisture content of soil in gardening systems.",
-        "c": "Ultrasonic sensors measure distance, not soil moisture.",
-        "d": "PIR sensors detect motion, not soil moisture."
+        "a": "Incorrect: PIR does not use sound.",
+        "b": "Correct: Heat variations, wind, sunlight cause false triggers.",
+        "c": "Incorrect: PIR has no magnetic detection.",
+        "d": "Incorrect: Calibration is not the main reason."
       },
       "correctAnswer": "b",
-      "difficulty": "beginner"
+      "difficulty": "intermediate"
     },
     {
-      "question": "Which sensor is used to detect air quality, specifically the presence of gases like CO2, in Arduino projects?",
+      "question": "How does a DHT sensor transfer digital data?",
       "answers": {
-        "a": "DHT Sensor",
-        "b": "MQ135 Sensor",
-        "c": "Ultrasonic Sensor",
-        "d": "Soil Moisture Sensor"
+        "a": "Using single-wire digital communication",
+        "b": "Using I2C protocol",
+        "c": "Using ultrasonic pulses",
+        "d": "Using analog voltage levels"
       },
       "explanations": {
-        "a": "DHT sensors measure temperature and humidity, not air quality.",
-        "b": "MQ135 sensors are designed to detect air quality and gases like CO2, ammonia, and alcohol.",
-        "c": "Ultrasonic sensors measure distance, not air quality.",
-        "d": "Soil Moisture sensors are used for detecting soil moisture, not air quality."
+        "a": "Correct: DHT uses a timed single-wire protocol.",
+        "b": "Incorrect: DHT is not I2C-based.",
+        "c": "Incorrect: Not related to ultrasonic.",
+        "d": "Incorrect: DHT gives digital, not analog data."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "How can soil moisture readings be used in smart irrigation?",
+      "answers": {
+        "a": "To measure sunlight levels",
+        "b": "To automatically control water supply",
+        "c": "To detect air pollution",
+        "d": "To detect motion in the field"
+      },
+      "explanations": {
+        "a": "Incorrect: Moisture sensors do not measure sunlight.",
+        "b": "Correct: Moisture level triggers irrigation based on soil need.",
+        "c": "Incorrect: Air sensors measure pollution.",
+        "d": "Incorrect: PIR/ultrasonic detect motion."
       },
       "correctAnswer": "b",
-      "difficulty": "beginner"
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "Why is the MQ135 sensor important in pollution monitoring?",
+      "answers": {
+        "a": "It detects humidity accurately",
+        "b": "It detects harmful gases in the air",
+        "c": "It measures sound levels",
+        "d": "It measures soil nutrients"
+      },
+      "explanations": {
+        "a": "Incorrect: Humidity is measured by DHT sensors.",
+        "b": "Correct: MQ135 detects CO2, NH3, benzene, and pollutants.",
+        "c": "Incorrect: Sound sensors measure sound.",
+        "d": "Incorrect: Soil sensors analyze nutrients."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "How do PIR and ultrasonic sensors differ in motion detection?",
+      "answers": {
+        "a": "PIR detects heat motion, ultrasonic detects distance changes",
+        "b": "Both detect motion using sound waves",
+        "c": "Both detect motion using heat",
+        "d": "PIR uses sound, ultrasonic uses light"
+      },
+      "explanations": {
+        "a": "Correct: PIR senses IR heat shifts, ultrasonic senses object movement by distance change.",
+        "b": "Incorrect: Only ultrasonic uses sound.",
+        "c": "Incorrect: Only PIR detects heat.",
+        "d": "Incorrect: Neither uses light."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "What is the role of calibration in an MQ135 sensor?",
+      "answers": {
+        "a": "To adjust humidity readings",
+        "b": "To accurately detect gas concentration levels",
+        "c": "To measure temperature more precisely",
+        "d": "To reduce soil moisture errors"
+      },
+      "explanations": {
+        "a": "Incorrect: MQ135 cannot measure humidity.",
+        "b": "Correct: Calibration ensures correct ppm gas readings.",
+        "c": "Incorrect: MQ135 does not measure temperature.",
+        "d": "Incorrect: Soil sensors need different calibration."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "How does temperature affect DHT sensor accuracy?",
+      "answers": {
+        "a": "It has no effect",
+        "b": "Extreme temperatures decrease accuracy",
+        "c": "Higher temperature increases the sensor size",
+        "d": "Temperature has no relation to humidity readings"
+      },
+      "explanations": {
+        "a": "Incorrect: Temperature affects DHT response time.",
+        "b": "Correct: Extreme heat/cold reduces sensor accuracy and response.",
+        "c": "Incorrect: Sensor size does not change.",
+        "d": "Incorrect: Humidity and temperature affect each other."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "Why do soil moisture sensor values fluctuate?",
+      "answers": {
+        "a": "Because soil conductivity changes with water distribution",
+        "b": "Because GPS signals affect it",
+        "c": "Because it measures air humidity inside soil",
+        "d": "Because it uses ultrasonic waves"
+      },
+      "explanations": {
+        "a": "Correct: Uneven water levels cause variable readings.",
+        "b": "Incorrect: GPS has no role.",
+        "c": "Incorrect: Soil moisture sensors measure conductivity.",
+        "d": "Incorrect: They do not use sound waves."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "Which IoT application uses two sensors together effectively?",
+      "answers": {
+        "a": "Smart security using PIR + Ultrasonic",
+        "b": "Soil testing using PIR + MQ135",
+        "c": "Distance measurement using DHT + PIR",
+        "d": "Smart lighting using MQ135 + Soil sensor"
+      },
+      "explanations": {
+        "a": "Correct: PIR detects motion; ultrasonic confirms movement distance.",
+        "b": "Incorrect: PIR is not used for soil.",
+        "c": "Incorrect: DHT cannot measure distance.",
+        "d": "Incorrect: MQ135 and soil sensor do not relate to lighting."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
     }
   ]
 }
