@@ -1,0 +1,59 @@
+#include "Wire.h"
+#include "Adafruit_LiquidCrystal.h"
+Adafruit_LiquidCrystal lcd(0);
+
+#define BUZZER 6
+#define RED 4
+#define BLUE 3
+#define GREEN 2
+#define SENSOR A0
+byte val;
+
+void setup() 
+{
+  pinMode(SENSOR,INPUT);
+  pinMode(RED,OUTPUT);
+  pinMode(GREEN,OUTPUT);
+  pinMode(BLUE,OUTPUT);
+  
+  lcd.begin(16, 2);
+  lcd.setCursor(0,0);
+  lcd.print("Data:");
+}
+
+void loop() 
+{
+  val = map(analogRead(A0),306,756,0,100);
+   lcd.setCursor(5,0);
+   lcd.print(val);
+    if(val >= 10)lcd.setCursor(7,0);
+    else lcd.setCursor(6,0);
+     lcd.print("/100 ");
+  
+ lcd.setCursor(6,1);
+    if(val < 33) 
+     { 
+      digitalWrite(GREEN,1);
+      digitalWrite(BLUE,0); 
+      digitalWrite(RED,0); 
+       noTone(BUZZER); 
+        lcd.print("acceptable");
+     }
+      else if(val < 66)
+       { 
+        digitalWrite(GREEN,1);
+        digitalWrite(BLUE,0); 
+        digitalWrite(RED,1); 
+         noTone(BUZZER); 
+          lcd.print("  exceeded");
+       }
+        else
+         {
+          digitalWrite(GREEN,0); 
+          digitalWrite(BLUE,0);
+          digitalWrite(RED,1);
+           tone(BUZZER,300);
+            lcd.print(" dangerous");
+         }
+  delay(500);
+}
