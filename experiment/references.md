@@ -1,4 +1,4 @@
-## References
+### References
 
 1. Arduino Official Documentation, "Sensor Interfacing Basics", Available at: https://www.arduino.cc/en/Guide
 2. Adafruit Learning System, "DHT Temperature & Humidity Sensor Guide", Available at: https://learn.adafruit.com

@@ -2,171 +2,111 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "How do ultrasonic sensors measure distance?",
+      "question": "1. How do ultrasonic sensors measure distance?",
       "answers": {
         "a": "By detecting heat from objects",
         "b": "By measuring time taken for sound waves to return",
         "c": "By reading infrared radiation",
         "d": "By using GPS signals"
       },
-      "explanations": {
-        "a": "Incorrect: Heat detection is used by PIR sensors.",
-        "b": "Correct: Ultrasonic sensors calculate distance using echo time.",
-        "c": "Incorrect: IR sensors use infrared, not ultrasonic.",
-        "d": "Incorrect: GPS cannot measure object distance."
-      },
       "correctAnswer": "b",
       "difficulty": "intermediate"
     },
     {
-      "question": "Why does a PIR sensor sometimes give false triggers?",
+      "question": "2. Why does a PIR sensor sometimes give false triggers?",
       "answers": {
         "a": "Because it uses sound waves",
         "b": "Due to sudden temperature changes or noise",
         "c": "Because it detects magnetic fields",
         "d": "Because it requires constant calibration"
       },
-      "explanations": {
-        "a": "Incorrect: PIR does not use sound.",
-        "b": "Correct: Heat variations, wind, sunlight cause false triggers.",
-        "c": "Incorrect: PIR has no magnetic detection.",
-        "d": "Incorrect: Calibration is not the main reason."
-      },
       "correctAnswer": "b",
       "difficulty": "intermediate"
     },
     {
-      "question": "How does a DHT sensor transfer digital data?",
+      "question": "3. How does a DHT sensor transfer digital data?",
       "answers": {
         "a": "Using single-wire digital communication",
         "b": "Using I2C protocol",
         "c": "Using ultrasonic pulses",
         "d": "Using analog voltage levels"
       },
-      "explanations": {
-        "a": "Correct: DHT uses a timed single-wire protocol.",
-        "b": "Incorrect: DHT is not I2C-based.",
-        "c": "Incorrect: Not related to ultrasonic.",
-        "d": "Incorrect: DHT gives digital, not analog data."
-      },
       "correctAnswer": "a",
       "difficulty": "intermediate"
     },
     {
-      "question": "How can soil moisture readings be used in smart irrigation?",
+      "question": "4. How can soil moisture readings be used in smart irrigation?",
       "answers": {
         "a": "To measure sunlight levels",
         "b": "To automatically control water supply",
         "c": "To detect air pollution",
         "d": "To detect motion in the field"
       },
-      "explanations": {
-        "a": "Incorrect: Moisture sensors do not measure sunlight.",
-        "b": "Correct: Moisture level triggers irrigation based on soil need.",
-        "c": "Incorrect: Air sensors measure pollution.",
-        "d": "Incorrect: PIR/ultrasonic detect motion."
-      },
       "correctAnswer": "b",
       "difficulty": "intermediate"
     },
     {
-      "question": "Why is the MQ135 sensor important in pollution monitoring?",
+      "question": "5. Why is the MQ135 sensor important in pollution monitoring?",
       "answers": {
         "a": "It detects humidity accurately",
         "b": "It detects harmful gases in the air",
         "c": "It measures sound levels",
         "d": "It measures soil nutrients"
       },
-      "explanations": {
-        "a": "Incorrect: Humidity is measured by DHT sensors.",
-        "b": "Correct: MQ135 detects CO2, NH3, benzene, and pollutants.",
-        "c": "Incorrect: Sound sensors measure sound.",
-        "d": "Incorrect: Soil sensors analyze nutrients."
-      },
       "correctAnswer": "b",
       "difficulty": "intermediate"
     },
     {
-      "question": "How do PIR and ultrasonic sensors differ in motion detection?",
+      "question": "6. How do PIR and ultrasonic sensors differ in motion detection?",
       "answers": {
         "a": "PIR detects heat motion, ultrasonic detects distance changes",
         "b": "Both detect motion using sound waves",
         "c": "Both detect motion using heat",
         "d": "PIR uses sound, ultrasonic uses light"
       },
-      "explanations": {
-        "a": "Correct: PIR senses IR heat shifts, ultrasonic senses object movement by distance change.",
-        "b": "Incorrect: Only ultrasonic uses sound.",
-        "c": "Incorrect: Only PIR detects heat.",
-        "d": "Incorrect: Neither uses light."
-      },
       "correctAnswer": "a",
       "difficulty": "intermediate"
     },
     {
-      "question": "What is the role of calibration in an MQ135 sensor?",
+      "question": "7. What is the role of calibration in an MQ135 sensor?",
       "answers": {
         "a": "To adjust humidity readings",
         "b": "To accurately detect gas concentration levels",
         "c": "To measure temperature more precisely",
         "d": "To reduce soil moisture errors"
       },
-      "explanations": {
-        "a": "Incorrect: MQ135 cannot measure humidity.",
-        "b": "Correct: Calibration ensures correct ppm gas readings.",
-        "c": "Incorrect: MQ135 does not measure temperature.",
-        "d": "Incorrect: Soil sensors need different calibration."
-      },
       "correctAnswer": "b",
       "difficulty": "intermediate"
     },
     {
-      "question": "How does temperature affect DHT sensor accuracy?",
+      "question": "8. How does temperature affect DHT sensor accuracy?",
       "answers": {
         "a": "It has no effect",
         "b": "Extreme temperatures decrease accuracy",
         "c": "Higher temperature increases the sensor size",
         "d": "Temperature has no relation to humidity readings"
       },
-      "explanations": {
-        "a": "Incorrect: Temperature affects DHT response time.",
-        "b": "Correct: Extreme heat/cold reduces sensor accuracy and response.",
-        "c": "Incorrect: Sensor size does not change.",
-        "d": "Incorrect: Humidity and temperature affect each other."
-      },
       "correctAnswer": "b",
       "difficulty": "intermediate"
     },
     {
-      "question": "Why do soil moisture sensor values fluctuate?",
+      "question": "9. Why do soil moisture sensor values fluctuate?",
       "answers": {
         "a": "Because soil conductivity changes with water distribution",
         "b": "Because GPS signals affect it",
         "c": "Because it measures air humidity inside soil",
         "d": "Because it uses ultrasonic waves"
       },
-      "explanations": {
-        "a": "Correct: Uneven water levels cause variable readings.",
-        "b": "Incorrect: GPS has no role.",
-        "c": "Incorrect: Soil moisture sensors measure conductivity.",
-        "d": "Incorrect: They do not use sound waves."
-      },
       "correctAnswer": "a",
       "difficulty": "intermediate"
     },
     {
-      "question": "Which IoT application uses two sensors together effectively?",
+      "question": "10. Which IoT application uses two sensors together effectively?",
       "answers": {
         "a": "Smart security using PIR + Ultrasonic",
         "b": "Soil testing using PIR + MQ135",
         "c": "Distance measurement using DHT + PIR",
         "d": "Smart lighting using MQ135 + Soil sensor"
-      },
-      "explanations": {
-        "a": "Correct: PIR detects motion; ultrasonic confirms movement distance.",
-        "b": "Incorrect: PIR is not used for soil.",
-        "c": "Incorrect: DHT cannot measure distance.",
-        "d": "Incorrect: MQ135 and soil sensor do not relate to lighting."
       },
       "correctAnswer": "a",
       "difficulty": "intermediate"

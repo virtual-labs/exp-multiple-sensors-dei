@@ -1,120 +1,138 @@
-Sensors are essential components in embedded systems and IoT applications. They allow the Arduino to detect environmental changes and convert physical parameters such as distance, motion, temperature, humidity, soil moisture, and air quality into electrical signals. In this experiment, we simulate the interfacing of five widely used sensors with Arduino. The virtual lab environment helps in understanding sensor behavior, data acquisition, and digital/analog processing without using physical hardware.
+Sensors are essential components in embedded systems and IoT applications. They allow the Arduino to detect environmental changes and convert physical parameters such as distance, motion, temperature, humidity, soil moisture, and air quality into electrical signals.
 
-# Ultrasonic Sensor (HC-SR04)
+In this experiment, we simulate the interfacing of **five widely used sensors** with Arduino.  
+The virtual lab environment helps in understanding sensor behavior, data acquisition, and digital/analog processing without physical hardware.
+
+---
+
+## Ultrasonic Sensor (HC-SR04)
 
 An ultrasonic sensor measures distance using sound waves beyond the audible range.
 
-## Working Principle
+### Working Principle
 
 It has two main components:
 
-Trigger Pin → sends an ultrasonic pulse.
-
-Echo Pin → receives the reflected pulse.
+- **Trigger Pin** → sends an ultrasonic pulse  
+- **Echo Pin** → receives the reflected pulse  
 
 Arduino measures the time taken for the echo to return.
 
-Distance is calculated using the formula:
+**Distance formula:**  
 Distance = (Time × Speed of Sound) / 2
 
-## Simulation Use
+### Simulation Use
 
-The virtual lab allows changing obstacle distance and viewing real-time measurements.
+- Users can adjust obstacle distance and view real-time measurements.
 
-## Applications
+### Applications
 
-Obstacle detection, robotics, parking systems, automation.
+- Obstacle detection  
+- Robotics  
+- Parking systems  
+- Automation  
 
-# PIR (Passive Infrared) Sensor
+---
+
+## PIR (Passive Infrared) Sensor
 
 A PIR sensor detects movement by sensing changes in infrared radiation emitted by warm objects (like humans).
 
-## Working Principle
+### Working Principle
 
-Contains pyroelectric sensors that detect IR variations.
+- Contains pyroelectric sensors that detect IR variations  
+- Gives a **digital output**:
+  - HIGH → motion detected  
+  - LOW → no motion  
+- Sensitivity and delay settings (in real hardware) are simulated virtually  
 
-Gives a digital output:
+### Simulation Use
 
-HIGH when motion is detected
+- Users can toggle simulated motion events to see output changes.
 
-LOW when no motion is detected
+### Applications
 
-Sensitivity and delay can be adjusted in real hardware (simulated virtually).
+- Security systems  
+- Motion-activated lighting  
+- Occupancy sensing  
 
-## Simulation Use
+---
 
-Users can toggle motion events to observe digital output changes.
+## DHT Sensor (DHT11 / DHT22)
 
-## Applications
+A DHT sensor measures **temperature** and **humidity**.
 
-Security systems, motion-activated lighting, occupancy sensing.
+### Working Principle
 
-# DHT Sensor (DHT11 / DHT22)
+Uses:
 
-A DHT sensor measures both temperature and humidity.
+- **NTC thermistor** for temperature  
+- **Capacitive humidity sensor** for humidity  
 
-## Working Principle
+Communication:
 
-## Uses:
+- Sends data to Arduino using a **single-wire digital protocol**  
+- Arduino reads data using a **DHT library**
 
-NTC thermistor for temperature measurement
+### Simulation Use
 
-Capacitive humidity sensor for humidity measurement
+- Temperature and humidity sliders allow users to modify environmental conditions.
 
-Sends data to Arduino via a single-wire digital communication protocol.
+### Applications
 
-Arduino reads values using a dedicated DHT library.
+- Weather monitoring  
+- HVAC systems  
+- Smart agriculture  
+- Home automation  
 
-## Simulation Use
+---
 
-In simulation, temperature and humidity sliders allow students to change environmental conditions.
+## Soil Moisture Sensor
 
-## Applications
+A soil moisture sensor measures the **water content** in soil.
 
-Weather monitoring, HVAC systems, smart agriculture, home automation.
-
-# Soil Moisture Sensor
-
-A soil moisture sensor measures the water content in soil.
-
-## Working Principle
+### Working Principle
 
 Works as a resistive sensor:
 
-Wet soil → Lower resistance → Higher analog value
+- Wet soil → **lower resistance** → higher analog value  
+- Dry soil → **higher resistance** → lower analog value  
 
-Dry soil → Higher resistance → Lower analog value
+Outputs:
 
-## Outputs:
+- **Analog signal** (moisture level)  
+- **Digital output** (wet/dry threshold on some modules)
 
-Analog signal (moisture level)
+### Simulation Use
 
-Sometimes digital signal (wet/dry threshold)
+- Users can adjust moisture levels to observe analog output changes.
 
-## Simulation Use
+### Applications
 
-The simulation lets users modify soil moisture level and observe analog changes.
+- Smart irrigation  
+- Plant monitoring  
+- Agricultural automation  
 
-## Applications
+---
 
-Smart irrigation, plant monitoring, agricultural automation.
+## MQ135 Air Quality Sensor
 
-# MQ135 Air Quality Sensor
+The MQ135 sensor detects gases such as **CO₂, NH₃, benzene, smoke, and pollutants**.
 
-The MQ135 sensor detects gases like CO₂, NH₃, benzene, smoke, and pollutants.
+### Working Principle
 
-## Working Principle
+- Contains a chemical sensing layer  
+- Resistance changes when exposed to gases  
+- Produces an **analog voltage** proportional to gas concentration  
+- Arduino reads this voltage via **analog pins**
 
-Contains a sensitive chemical layer whose resistance changes when exposed to gases.
+### Simulation Use
 
-Produces an analog voltage proportional to pollutant concentration.
+- Users can adjust gas concentrations and observe sensor output variations.
 
-Arduino reads this voltage via analog pins to determine air quality level.
+### Applications
 
-## Simulation Use
-
-Virtual labs allow adjusting gas concentration to observe sensor output variations.
-
-## Applications
-
-Air quality monitoring, pollution detection, safety systems, IoT environment stations.
+- Air quality monitoring  
+- Pollution detection  
+- Safety systems  
+- IoT environmental stations  
