@@ -1,0 +1,115 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "1. How do ultrasonic sensors measure distance?",
+      "answers": {
+        "a": "By detecting heat from objects",
+        "b": "By measuring time taken for sound waves to return",
+        "c": "By reading infrared radiation",
+        "d": "By using GPS signals"
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "2. Why does a PIR sensor sometimes give false triggers?",
+      "answers": {
+        "a": "Because it uses sound waves",
+        "b": "Due to sudden temperature changes or noise",
+        "c": "Because it detects magnetic fields",
+        "d": "Because it requires constant calibration"
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "3. How does a DHT sensor transfer digital data?",
+      "answers": {
+        "a": "Using single-wire digital communication",
+        "b": "Using I2C protocol",
+        "c": "Using ultrasonic pulses",
+        "d": "Using analog voltage levels"
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "4. How can soil moisture readings be used in smart irrigation?",
+      "answers": {
+        "a": "To measure sunlight levels",
+        "b": "To automatically control water supply",
+        "c": "To detect air pollution",
+        "d": "To detect motion in the field"
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "5. Why is the MQ135 sensor important in pollution monitoring?",
+      "answers": {
+        "a": "It detects humidity accurately",
+        "b": "It detects harmful gases in the air",
+        "c": "It measures sound levels",
+        "d": "It measures soil nutrients"
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "6. How do PIR and ultrasonic sensors differ in motion detection?",
+      "answers": {
+        "a": "PIR detects heat motion, ultrasonic detects distance changes",
+        "b": "Both detect motion using sound waves",
+        "c": "Both detect motion using heat",
+        "d": "PIR uses sound, ultrasonic uses light"
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "7. What is the role of calibration in an MQ135 sensor?",
+      "answers": {
+        "a": "To adjust humidity readings",
+        "b": "To accurately detect gas concentration levels",
+        "c": "To measure temperature more precisely",
+        "d": "To reduce soil moisture errors"
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "8. How does temperature affect DHT sensor accuracy?",
+      "answers": {
+        "a": "It has no effect",
+        "b": "Extreme temperatures decrease accuracy",
+        "c": "Higher temperature increases the sensor size",
+        "d": "Temperature has no relation to humidity readings"
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "9. Why do soil moisture sensor values fluctuate?",
+      "answers": {
+        "a": "Because soil conductivity changes with water distribution",
+        "b": "Because GPS signals affect it",
+        "c": "Because it measures air humidity inside soil",
+        "d": "Because it uses ultrasonic waves"
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "10. Which IoT application uses two sensors together effectively?",
+      "answers": {
+        "a": "Smart security using PIR + Ultrasonic",
+        "b": "Soil testing using PIR + MQ135",
+        "c": "Distance measurement using DHT + PIR",
+        "d": "Smart lighting using MQ135 + Soil sensor"
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    }
+  ]
+}
