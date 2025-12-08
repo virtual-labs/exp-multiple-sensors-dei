@@ -1,4 +1,4 @@
-## Procedure
+### Procedure for the experiment is as follows:
 
 1. Open the experiment in the virtual lab for interfacing multiple sensors.  
    The Arduino board and all sensors (Ultrasonic, PIR, DHT, Soil Moisture, MQ135) are already connected in the workspace.
