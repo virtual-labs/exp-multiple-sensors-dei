@@ -2,171 +2,111 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "What does PIR stand for?",
+      "question": "1. What does PIR stand for?",
       "answers": {
         "a": "Passive Infrared",
         "b": "Primary Internal Resistor",
         "c": "Peripheral Input Receiver",
         "d": "Pulse Infra Range"
       },
-      "explanations": {
-        "a": "Correct: PIR means Passive Infrared.",
-        "b": "Incorrect: Not related to sensors.",
-        "c": "Incorrect: Made-up term.",
-        "d": "Incorrect: Not the correct expansion."
-      },
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
     {
-      "question": "Which sensor is used for measuring distance?",
+      "question": "2. Which sensor is used for measuring distance?",
       "answers": {
         "a": "PIR sensor",
         "b": "Ultrasonic sensor",
         "c": "DHT sensor",
         "d": "MQ135 sensor"
       },
-      "explanations": {
-        "a": "Incorrect: PIR detects motion, not distance.",
-        "b": "Correct: Ultrasonic sensors measure distance using sound waves.",
-        "c": "Incorrect: DHT measures temperature & humidity.",
-        "d": "Incorrect: MQ135 detects air quality gases."
-      },
       "correctAnswer": "b",
       "difficulty": "beginner"
     },
     {
-      "question": "DHT sensor measures which two parameters?",
+      "question": "3. DHT sensor measures which two parameters?",
       "answers": {
         "a": "Temperature and humidity",
         "b": "Pressure and altitude",
         "c": "Gas levels and dust",
         "d": "Light intensity and color"
       },
-      "explanations": {
-        "a": "Correct: DHT11/DHT22 measure temperature and humidity.",
-        "b": "Incorrect: Not supported by DHT.",
-        "c": "Incorrect: Gas sensors like MQ series measure gas.",
-        "d": "Incorrect: These belong to light sensors."
-      },
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
     {
-      "question": "Soil moisture sensor gives which type of output?",
+      "question": "4. Soil moisture sensor gives which type of output?",
       "answers": {
         "a": "Digital only",
         "b": "Analog only",
         "c": "Both analog and digital",
         "d": "PWM only"
       },
-      "explanations": {
-        "a": "Incorrect: Many provide both outputs.",
-        "b": "Incorrect: Some also have digital comparator output.",
-        "c": "Correct: Most soil sensors provide analog (%) and digital (threshold).",
-        "d": "Incorrect: Not a PWM-based sensor."
-      },
       "correctAnswer": "c",
       "difficulty": "beginner"
     },
     {
-      "question": "MQ135 sensor is used for detecting ___.",
+      "question": "5. MQ135 sensor is used for detecting ___.",
       "answers": {
         "a": "Temperature",
         "b": "Humidity",
         "c": "Air quality and gases",
         "d": "Sound intensity"
       },
-      "explanations": {
-        "a": "Incorrect: Not a temperature sensor.",
-        "b": "Incorrect: Not for humidity.",
-        "c": "Correct: MQ135 detects CO2, NH3, alcohol, benzene, etc.",
-        "d": "Incorrect: Sound sensors measure sound."
-      },
       "correctAnswer": "c",
       "difficulty": "beginner"
     },
     {
-      "question": "Ultrasonic sensor uses which waves?",
+      "question": "6. Ultrasonic sensor uses which waves?",
       "answers": {
         "a": "Light waves",
         "b": "Infrared waves",
         "c": "Microwaves",
         "d": "High-frequency sound waves"
       },
-      "explanations": {
-        "a": "Incorrect: Not optical.",
-        "b": "Incorrect: IR is used by IR sensors, not ultrasonic.",
-        "c": "Incorrect: Microwaves belong to radar sensors.",
-        "d": "Correct: Ultrasonic sensors use sound waves above 20 kHz."
-      },
       "correctAnswer": "d",
       "difficulty": "beginner"
     },
     {
-      "question": "PIR detects motion using which type of radiation?",
+      "question": "7. PIR detects motion using which type of radiation?",
       "answers": {
         "a": "Ultraviolet radiation",
         "b": "Visible light",
         "c": "Infrared radiation",
         "d": "X-ray radiation"
       },
-      "explanations": {
-        "a": "Incorrect: UV is not used.",
-        "b": "Incorrect: PIR does not detect visible light.",
-        "c": "Correct: PIR detects infrared emitted by human bodies.",
-        "d": "Incorrect: X-rays are not used in IoT sensors."
-      },
       "correctAnswer": "c",
       "difficulty": "beginner"
     },
     {
-      "question": "DHT sensor communicates through which method?",
+      "question": "8. DHT sensor communicates through which method?",
       "answers": {
         "a": "Digital single-wire protocol",
         "b": "I2C protocol",
         "c": "SPI protocol",
         "d": "UART protocol"
       },
-      "explanations": {
-        "a": "Correct: DHT uses a single-wire digital communication method.",
-        "b": "Incorrect: DHT does not use I2C.",
-        "c": "Incorrect: SPI is not used here.",
-        "d": "Incorrect: UART is used in serial devices."
-      },
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
     {
-      "question": "Which sensor is used for air quality detection?",
+      "question": "9. Which sensor is used for air quality detection?",
       "answers": {
         "a": "MQ135",
         "b": "PIR sensor",
         "c": "Ultrasonic sensor",
         "d": "DHT sensor"
       },
-      "explanations": {
-        "a": "Correct: MQ135 detects harmful gases and checks air quality.",
-        "b": "Incorrect: PIR is for motion detection.",
-        "c": "Incorrect: Ultrasonic is for distance.",
-        "d": "Incorrect: DHT measures temperature & humidity."
-      },
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
     {
-      "question": "Soil moisture sensor is useful in which IoT domain?",
+      "question": "10. Soil moisture sensor is useful in which IoT domain?",
       "answers": {
         "a": "Smart agriculture",
         "b": "Smart lighting",
         "c": "Smart parking",
         "d": "Home security"
-      },
-      "explanations": {
-        "a": "Correct: Used for irrigation and crop monitoring.",
-        "b": "Incorrect: Light sensors used instead.",
-        "c": "Incorrect: Parking uses ultrasonic sensors.",
-        "d": "Incorrect: PIR and cameras are used in security."
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
