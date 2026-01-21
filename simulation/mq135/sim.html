@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Virtual IoT Lab DEI</title>
+    <link
+      rel="icon"
+      href="https://www.vlab.co.in/images/logo.jpg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" type="text/css" href="src/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/monokai.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="if-vid">
+        <p class="p-head">Interfacing of MQ135 Sensor with Arduino :</p>
+        <div class="interfacing">
+          <img id="ifimg" src="./src/images/MQ1.png" alt="interfacing" />
+          <button id="pushbutton" onclick="changeImage();"></button>
+          <button id="smoke" onclick="includeSmoke();">
+            Add smoke to activate sensor
+          </button>
+          <p id="sliderComment">
+            Use the slider to move smoke towards or away from MQ135 sensor.
+          </p>
+          <input
+            onchange="setImage(this)"
+            id="imageSlider"
+            type="range"
+            min="0"
+            max="24"
+            value="0"
+            step="1"
+          />
+        </div>
+      </div>
+
+      <div class="right-panel">
+        <div class="instruction-box">
+          <h3 class="box-title">Instructions</h3>
+          <div class="instruction-content">
+            <div class="instruction-section">
+              <h4>Objective:</h4>
+              <p>Learn to use the <strong>MQ135 air quality sensor</strong> to detect harmful gases (CO2, ammonia, benzene, smoke) and display air quality levels with visual indicators (RGB LED) and audio alerts (buzzer).</p>
+            </div>
+
+            <div class="instruction-section">
+              <h4>Steps to Perform:</h4>
+              <ol>
+                <li>Click '<strong>Start Simulation</strong>' to power the circuit</li>
+                <li>Click '<strong>Add smoke to activate sensor</strong>' button to introduce pollutants</li>
+                <li>Use the slider to move smoke closer or farther from the MQ135 sensor</li>
+                <li>Observe the <strong>LCD display</strong> showing air quality data (0-100 scale)</li>
+                <li>Watch the <strong>RGB LED color changes</strong>:
+                  <ul>
+                    <li><strong>Green</strong>: Air quality acceptable (0-33)</li>
+                    <li><strong>Yellow/Orange</strong>: Air quality exceeded (33-66)</li>
+                    <li><strong>Red + Buzzer</strong>: Air quality dangerous (66-100)</li>
+                  </ul>
+                </li>
+                <li>Notice the buzzer activates when pollution reaches dangerous levels</li>
+              </ol>
+            </div>
+
+            <div class="instruction-section">
+              <h4>Key Concepts:</h4>
+              <ul>
+                <li><strong>MQ135 Sensor</strong>: Gas sensor for air quality monitoring (detects CO2, NH3, NOx, alcohol, benzene, smoke)</li>
+                <li><strong>Analog Reading</strong>: analogRead(A0) returns values from 306-756 based on gas concentration</li>
+                <li><strong>map() Function</strong>: Converts sensor range (306-756) to percentage scale (0-100)</li>
+                <li><strong>Threshold-based Control</strong>: Uses if-else conditions to trigger different alerts</li>
+                <li><strong>LCD Display</strong>: 16x2 display shows real-time air quality data and status</li>
+                <li><strong>RGB LED</strong>: Digital pins 2-4 control Red, Green, Blue LEDs for visual feedback</li>
+                <li><strong>Buzzer Alert</strong>: tone() function generates 300Hz warning sound for dangerous levels</li>
+                <li><strong>I2C Communication</strong>: LCD uses I2C protocol (Adafruit_LiquidCrystal library)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-box">
+          <div class="code-box-header">
+            <h3 class="box-title">Arduino Code</h3>
+            <div class="code-actions">
+              <button id="startBtn" class="control-btn start-btn" onclick="changePower();">
+                <span class="play-icon">▶</span> Start Simulation
+              </button>
+            </div>
+          </div>
+          <div class="code-content">
+            <textarea id="arduinoCode" readonly>
+#include "Wire.h"
+#include "Adafruit_LiquidCrystal.h"
+Adafruit_LiquidCrystal lcd(0);
+
+#define BUZZER 6
+#define RED 4
+#define BLUE 3
+#define GREEN 2
+#define SENSOR A0
+byte val;
+
+void setup() 
+{
+  pinMode(SENSOR,INPUT);
+  pinMode(RED,OUTPUT);
+  pinMode(GREEN,OUTPUT);
+  pinMode(BLUE,OUTPUT);
+  
+  lcd.begin(16, 2);
+  lcd.setCursor(0,0);
+  lcd.print("Data:");
+}
+
+void loop() 
+{
+  val = map(analogRead(A0),306,756,0,100);
+   lcd.setCursor(5,0);
+   lcd.print(val);
+    if(val >= 10)lcd.setCursor(7,0);
+    else lcd.setCursor(6,0);
+     lcd.print("/100 ");
+  
+ lcd.setCursor(6,1);
+    if(val < 33) 
+     { 
+      digitalWrite(GREEN,1);
+      digitalWrite(BLUE,0); 
+      digitalWrite(RED,0); 
+       noTone(BUZZER); 
+        lcd.print("acceptable");
+     }
+      else if(val < 66)
+       { 
+        digitalWrite(GREEN,1);
+        digitalWrite(BLUE,0); 
+        digitalWrite(RED,1); 
+         noTone(BUZZER); 
+          lcd.print("  exceeded");
+       }
+        else
+         {
+          digitalWrite(GREEN,0); 
+          digitalWrite(BLUE,0);
+          digitalWrite(RED,1);
+           tone(BUZZER,300);
+            lcd.print(" dangerous");
+         }
+  delay(500);
+}
+            </textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/clike/clike.min.js"></script>
+    <script type="text/javascript" src="src/js/main.js"></script>
+    <script>
+      let editor = CodeMirror.fromTextArea(document.getElementById("arduinoCode"), {
+        mode: "text/x-csrc",
+        theme: "monokai",
+        lineNumbers: true,
+        readOnly: true,
+        lineWrapping: false,
+        scrollbarStyle: "native"
+      });
+    </script>
+  </body>
+</html>
