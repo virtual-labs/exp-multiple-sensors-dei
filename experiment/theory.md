@@ -1,138 +1,143 @@
-Sensors are essential components in embedded systems and IoT applications. They allow the Arduino to detect environmental changes and convert physical parameters such as distance, motion, temperature, humidity, soil moisture, and air quality into electrical signals.
+#### Objective
 
-In this experiment, we simulate the interfacing of **five widely used sensors** with Arduino.  
-The virtual lab environment helps in understanding sensor behavior, data acquisition, and digital/analog processing without physical hardware.
+The objective of this experiment is to simulate and understand the interfacing of multiple environmental and motion sensors—**Ultrasonic Sensor, PIR Sensor, DHT Sensor, Soil Moisture Sensor, and MQ135 Gas Sensor**—with an Arduino microcontroller.
 
----
+This experiment aims to provide in-depth knowledge of **multi-sensor data acquisition**, **environmental parameter monitoring**, and **sensor-based decision making**. It also helps learners understand how different sensors with varied output characteristics (digital, analog, and timing-based) can be integrated into a single embedded system.
 
-## Ultrasonic Sensor (HC-SR04)
+#### Introduction
 
-An ultrasonic sensor measures distance using sound waves beyond the audible range.
+Sensors form the backbone of modern embedded systems and Internet of Things (IoT) applications. A sensor is a device that detects physical, chemical, or environmental changes and converts them into electrical signals that can be processed by a microcontroller.
 
-### Working Principle
+In real-world systems, a single sensor is often insufficient to describe the surrounding environment accurately. Therefore, multiple sensors are used together to monitor various parameters such as distance, motion, temperature, humidity, soil condition, and air quality. These multi-sensor systems are widely used in applications like **smart agriculture**, **environmental monitoring**, **industrial automation**, **healthcare systems**, and **smart cities**.
 
-It has two main components:
+In this experiment, Arduino acts as a central processing unit that collects data from multiple sensors, processes the sensor readings, and enables intelligent decision making. This simulation demonstrates how different sensors operate simultaneously and how Arduino handles multiple inputs efficiently.
 
-- **Trigger Pin** → sends an ultrasonic pulse  
-- **Echo Pin** → receives the reflected pulse  
+#### Arduino Sensor Interfacing Theory
 
-Arduino measures the time taken for the echo to return.
+Arduino supports multiple sensor interfacing techniques depending on sensor type and output signal characteristics. Sensors connected to Arduino can be broadly classified into:
 
-**Distance formula:**  
-Distance = (Time × Speed of Sound) / 2
+- **Digital Sensors** – Provide discrete output (HIGH or LOW)
+- **Analog Sensors** – Provide continuous voltage output
+- **Timing-Based Sensors** – Depend on pulse duration or communication timing
 
-### Simulation Use
+Arduino contains an internal **Analog-to-Digital Converter (ADC)** that converts analog voltages in the range of **0–5V** into digital values between **0 and 1023**. This conversion allows Arduino to process real-world analog signals digitally.
 
-- Users can adjust obstacle distance and view real-time measurements.
+To handle sensor data efficiently, Arduino provides built-in functions and supports external libraries that simplify sensor interfacing and ensure accurate readings.
 
-### Applications
+**Commonly used Arduino functions include:**
+- `digitalRead()` – Reads binary output from digital sensors  
+- `analogRead()` – Reads analog voltage levels from sensors  
+- `pulseIn()` – Measures pulse duration for timing-based sensors  
+- Sensor-specific libraries – Used for calibration and protocol handling  
 
-- Obstacle detection  
-- Robotics  
-- Parking systems  
-- Automation  
+#### Components
+#### 1. Ultrasonic Sensor
 
----
+##### Working Principle
 
-## PIR (Passive Infrared) Sensor
+An ultrasonic sensor measures distance using **high-frequency sound waves** beyond the range of human hearing. The sensor emits an ultrasonic pulse through its **Trigger** pin. When this pulse strikes an object, it is reflected back and received by the **Echo** pin.
 
-A PIR sensor detects movement by sensing changes in infrared radiation emitted by warm objects (like humans).
+The time taken by the pulse to travel to the object and return is measured. Distance is calculated using the **time of flight** principle:
 
-### Working Principle
+Distance = (Speed of Sound × Time) / 2
 
-- Contains pyroelectric sensors that detect IR variations  
-- Gives a **digital output**:
-  - HIGH → motion detected  
-  - LOW → no motion  
-- Sensitivity and delay settings (in real hardware) are simulated virtually  
+This method provides accurate distance measurement without physical contact.
 
-### Simulation Use
+##### Interfacing with Arduino
 
-- Users can toggle simulated motion events to see output changes.
+- Trigger pin connected to a **digital output pin**
+- Echo pin connected to a **digital input pin**
+- `pulseIn()` function used to measure echo time
 
-### Applications
+<div><img src="./images/hcsr04.avif" width="30%"></div>
+<div><img src="./images/hcsr04_pin.png" width="30%"></div>  
+*Source: HC-SR04 Datasheet*
 
-- Security systems  
-- Motion-activated lighting  
-- Occupancy sensing  
+##### Applications
 
----
+- Obstacle detection in robotics  
+- Distance measurement systems  
+- Smart parking and vehicle detection  
 
-## DHT Sensor (DHT11 / DHT22)
+#### 2. PIR Sensor
 
-A DHT sensor measures **temperature** and **humidity**.
+##### Working Principle
 
-### Working Principle
+A PIR (Passive Infrared) sensor detects motion by sensing changes in infrared radiation emitted by warm objects such as humans or animals. The sensor contains pyroelectric elements that respond to variations in infrared energy.
 
-Uses:
+When motion is detected within the sensing range, the PIR sensor outputs a **HIGH signal**. In the absence of motion, the output remains **LOW**. Sensitivity and delay time can be adjusted using onboard potentiometers.
 
-- **NTC thermistor** for temperature  
-- **Capacitive humidity sensor** for humidity  
+##### Interfacing with Arduino
 
-Communication:
+- Output pin connected to a **digital input pin**
+- No continuous power signal required from Arduino
 
-- Sends data to Arduino using a **single-wire digital protocol**  
-- Arduino reads data using a **DHT library**
+<div><img src="./images/pir.png" width="25%"></div> 
+<div><img src="./images/pir2.png" width="25%"></div>  
+*Source: PIR Sensor Datasheet*
 
-### Simulation Use
+##### Applications
 
-- Temperature and humidity sliders allow users to modify environmental conditions.
+- Motion-based security systems  
+- Automatic lighting control  
+- Occupancy detection systems  
 
-### Applications
+#### 3. Soil Moisture Sensor
 
-- Weather monitoring  
-- HVAC systems  
-- Smart agriculture  
-- Home automation  
+##### Working Principle
 
----
+A soil moisture sensor determines the water content in soil by measuring its electrical conductivity. Wet soil conducts electricity more efficiently than dry soil, resulting in different resistance values.
 
-## Soil Moisture Sensor
+These resistance changes are converted into voltage variations, which are read by Arduino as analog values. This enables continuous monitoring of soil moisture levels.
 
-A soil moisture sensor measures the **water content** in soil.
+##### Interfacing with Arduino
 
-### Working Principle
+- Analog output connected to an **analog input pin**
+- Moisture level interpreted using ADC values
 
-Works as a resistive sensor:
+<div><img src="./images/soil_moisture.webp" width="30%"></div>
+<div><img src="./images/soil_circuit.png" width="30%"></div>
+*Source: Agricultural Sensor Documentation*
 
-- Wet soil → **lower resistance** → higher analog value  
-- Dry soil → **higher resistance** → lower analog value  
+##### Applications
 
-Outputs:
+- Automated irrigation systems  
+- Precision farming  
+- Crop health monitoring  
 
-- **Analog signal** (moisture level)  
-- **Digital output** (wet/dry threshold on some modules)
+#### 4. MQ135 Gas Sensor
 
-### Simulation Use
+##### Working Principle
 
-- Users can adjust moisture levels to observe analog output changes.
+The MQ135 gas sensor is designed to detect air quality and harmful gases such as ammonia, carbon dioxide, benzene, and smoke. The sensing element changes its resistance in the presence of gases, resulting in varying output voltage.
 
-### Applications
+The sensor requires a **preheating period** to stabilize before accurate measurements can be obtained.
 
-- Smart irrigation  
-- Plant monitoring  
-- Agricultural automation  
+##### Interfacing with Arduino
 
----
+- Analog output connected to an **analog input pin**
+- Requires calibration for accurate gas concentration measurement
 
-## MQ135 Air Quality Sensor
+<div><img src="./images/mq135.jpg" width="30%"></div>
+<div><img src="./images/mq135_circuit.jpg" width="30%"></div>
+*Source: MQ135 Sensor Datasheet*
 
-The MQ135 sensor detects gases such as **CO₂, NH₃, benzene, smoke, and pollutants**.
-
-### Working Principle
-
-- Contains a chemical sensing layer  
-- Resistance changes when exposed to gases  
-- Produces an **analog voltage** proportional to gas concentration  
-- Arduino reads this voltage via **analog pins**
-
-### Simulation Use
-
-- Users can adjust gas concentrations and observe sensor output variations.
-
-### Applications
+##### Applications
 
 - Air quality monitoring  
-- Pollution detection  
-- Safety systems  
-- IoT environmental stations  
+- Pollution detection systems  
+- Industrial safety applications  
+
+#### Conclusion
+
+This experiment provides a comprehensive understanding of interfacing multiple sensors with Arduino for real-time environmental monitoring. The knowledge gained from this experiment forms a strong foundation for designing advanced embedded systems and IoT solutions such as smart agriculture platforms, environmental monitoring systems, and intelligent automation.
+
+#### References
+
+1. Arduino Official Documentation – https://www.arduino.cc  
+2. HC-SR04 Ultrasonic Sensor Datasheet  
+3. PIR Motion Sensor Datasheet  
+4. Adafruit DHT Sensor Guide  
+5. MQ135 Gas Sensor Datasheet  
+6. Embedded Systems Design – Raj Kamal  
+
