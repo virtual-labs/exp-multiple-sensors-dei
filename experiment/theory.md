@@ -50,7 +50,6 @@ This method provides accurate distance measurement without physical contact.
 - `pulseIn()` function used to measure echo time
 
 <div><img src="./images/hcsr04.avif" width="30%"></div>
-<div><img src="./images/hcsr04_pin.png" width="30%"></div>  
 *Source: HC-SR04 Datasheet*
 
 ##### Applications
@@ -72,8 +71,8 @@ When motion is detected within the sensing range, the PIR sensor outputs a **HIG
 - Output pin connected to a **digital input pin**
 - No continuous power signal required from Arduino
 
-<div><img src="./images/pir.png" width="25%"></div> 
-<div><img src="./images/pir2.png" width="25%"></div>  
+<!-- <div><img src="./images/pir.png" width="25%"></div>  -->
+<div><img src="./images/pir2.png" width="45%"></div>  
 *Source: PIR Sensor Datasheet*
 
 ##### Applications
@@ -96,7 +95,6 @@ These resistance changes are converted into voltage variations, which are read b
 - Moisture level interpreted using ADC values
 
 <div><img src="./images/soil_moisture.webp" width="30%"></div>
-<div><img src="./images/soil_circuit.png" width="30%"></div>
 *Source: Agricultural Sensor Documentation*
 
 ##### Applications
@@ -118,8 +116,7 @@ The sensor requires a **preheating period** to stabilize before accurate measure
 - Analog output connected to an **analog input pin**
 - Requires calibration for accurate gas concentration measurement
 
-<div><img src="./images/mq135.jpg" width="30%"></div>
-<div><img src="./images/mq135_circuit.jpg" width="30%"></div>
+<div><img src="./images/mq135.jpg" width="30%"><img src="./images/mq135_circuit.jpg" width="50%"></div>
 *Source: MQ135 Sensor Datasheet*
 
 ##### Applications
