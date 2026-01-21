@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soil Moisture Sensor - Virtual IoT Lab</title>
+  <link rel="icon" href="https://www.vlab.co.in/images/logo.jpg" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/monokai.min.css">
+  <link rel="stylesheet" href="./src/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="if-vid">
+      <p class="p-head">Interfacing Soil Moisture Sensor with Arduino</p>
+      <div class="interfacing">
+        <img id="circuitImg" src="./src/images/SM1.png" alt="Arduino Soil Moisture Sensor Circuit" />
+        
+        <div class="slider-container" id="sliderContainer">
+          <div class="slider-label">Soil Moisture Level</div>
+          <input type="range" id="moistureSlider" class="moisture-slider" 
+                 min="0" max="100" value="0" step="1" oninput="updateMoisture(this.value)">
+          <div class="slider-values">
+            <span class="value-label">Dry (0%)</span>
+            <span class="value-label">Medium (50%)</span>
+            <span class="value-label">Wet (100%)</span>
+          </div>
+          <div class="moisture-display" id="moistureDisplay">
+            <span class="moisture-value" id="moistureValue">0</span>
+            <span class="moisture-unit">% Moisture</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <div class="instruction-box">
+        <h3 class="box-title">Instructions</h3>
+        <div class="instruction-content">
+          <div class="instruction-section">
+            <h4>Objective:</h4>
+            <p>Learn to use the <strong>Soil Moisture Sensor</strong> to measure soil humidity levels and control RGB LED indicators based on moisture content, enabling automated plant watering systems.</p>
+          </div>
+
+          <div class="instruction-section">
+            <h4>Steps to Perform:</h4>
+            <ol>
+              <li>Click '<strong>Start Simulation</strong>' to power the Arduino and enable the moisture sensor</li>
+              <li>Use the <strong>slider</strong> to adjust soil moisture levels from 0% (dry) to 100% (wet)</li>
+              <li>Observe the <strong>RGB LED color changes</strong>:
+                <ul>
+                  <li><strong>Red LED</strong>: Dry soil (0-39% moisture) - needs watering</li>
+                  <li><strong>Yellow LED</strong>: Moderate moisture (40-54% moisture) - optimal level</li>
+                  <li><strong>Green LED</strong>: High moisture (54-100% moisture) - overwatered</li>
+                </ul>
+              </li>
+              <li>Monitor the <strong>moisture percentage</strong> displayed below the slider</li>
+              <li>Notice how the sensor reading maps to 0-255 Arduino analog values</li>
+            </ol>
+          </div>
+
+          <div class="instruction-section">
+            <h4>Key Concepts:</h4>
+            <ul>
+              <li><strong>Soil Moisture Sensor</strong>: Measures soil water content using resistance between two probes</li>
+              <li><strong>Analog Reading</strong>: Arduino reads sensor values (0-1023) and maps to 0-255 range</li>
+              <li><strong>RGB LED Indication</strong>: Visual feedback system with three states (dry/moderate/wet)</li>
+              <li><strong>Threshold Logic</strong>: if-else conditions control LED based on moisture ranges</li>
+              <li><strong>Automated Irrigation</strong>: Can trigger water pumps when moisture drops below threshold</li>
+              <li><strong>Applications</strong>: Smart agriculture, garden automation, greenhouse monitoring</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-box">
+        <div class="code-header">
+          <h3 class="box-title">Arduino Code</h3>
+          <button class="control-btn start-btn" id="startBtn" onclick="changePower()">
+            <span class="play-icon">▶</span> Start Simulation
+          </button>
+        </div>
+        <div class="editor-container">
+          <textarea id="code">int Sensor = 0;
+int data = 0; 
+
+void setup(){
+  pinMode(A0, INPUT);
+  pinMode(9, OUTPUT);
+  pinMode(10, OUTPUT);
+  pinMode(11, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop(){
+  Sensor = analogRead(A0);
+  data = map(Sensor,0, 1023, 0, 255);
+  Serial.println(data);
+  
+  if (data < 60){
+    digitalWrite(9,0);
+    digitalWrite(10,0);
+    digitalWrite(11,1);
+  }
+  
+  if (data > 60 && data < 150){
+    digitalWrite(9,0);
+    digitalWrite(10,1);
+    digitalWrite(11,0);
+  }
+  if (data > 150){
+    digitalWrite(9,1);
+    digitalWrite(10,0);
+    digitalWrite(11,0);
+  }
+}</textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/clike/clike.min.js"></script>
+  <script src="./src/js/main.js"></script>
+</body>
+</html>
