@@ -1,48 +1,49 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  min-height: 100vh;
-  width: 100%;
-  margin: 0;
-  overflow: hidden;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #F4F5F6;
+    min-height: 100vh;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #F4F5F6;
 }
 
 .container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: row;
-  background-color: #F4F5F6;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    background-color: #F4F5F6;
 }
 
 .if-vid {
-  flex: 1;
-  /* padding: 8px; */
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    flex: 1;
+    /* padding: 8px; */
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .p-head {
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  margin-bottom: 20px;
-  font-size: 18px;
-  color: #333;
-  margin-left: -500px;
-  margin-top: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #333;
+    margin-left: -500px;
+    margin-top: 16px;
 }
+
 /* Workbench Area */
 .workbench {
     position: relative;
@@ -63,28 +64,30 @@ body {
     width: 100%;
     max-width: 700px;
     margin: 0 auto;
-    
+
 }
 
 #circuitImg {
     width: 70%;
     height: auto;
     margin-top: 70px;
-    
+
     display: block;
-    transition: all 0.3s ease;    pointer-events: none;
+    transition: all 0.3s ease;
+    pointer-events: none;
     user-select: none;
     -webkit-user-drag: none;
     -moz-user-select: none;
     -webkit-user-select: none;
-    -ms-user-select: none;}
-    
+    -ms-user-select: none;
+}
+
 
 /* Hidden PIR Sensor for detection */
 .pir-sensor-hidden {
     position: absolute;
-    top: 29%;
-    left: 62%;
+    top: 25%;
+    left: 50%;
     width: 60px;
     height: 60px;
     pointer-events: none;
@@ -175,7 +178,7 @@ body {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
 }
 
 .person-label {
@@ -427,11 +430,25 @@ body {
 }
 
 /* Syntax Highlighting Colors */
-.comment { color: #75715e; }
-.keyword { color: #f92672; }
-.function { color: #a6e22e; }
-.constant { color: #ae81ff; }
-.string { color: #e6db74; }
+.comment {
+    color: #75715e;
+}
+
+.keyword {
+    color: #f92672;
+}
+
+.function {
+    color: #a6e22e;
+}
+
+.constant {
+    color: #ae81ff;
+}
+
+.string {
+    color: #e6db74;
+}
 
 /* Serial Monitor */
 .serial-monitor {
