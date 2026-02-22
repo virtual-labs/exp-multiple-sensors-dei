@@ -65,7 +65,7 @@ function toggleSimulation() {
         startBtn.classList.remove('start-btn');
         startBtn.classList.add('stop-btn');
         serialOutput.innerHTML = '<span style="opacity: 0.7">Serial Monitor Connected...</span><br>';
-        
+
         // Change image to sim_on
         if (circuitImg) {
             circuitImg.src = 'sim_on.png';
@@ -77,10 +77,15 @@ function toggleSimulation() {
         startBtn.classList.add('start-btn');
         serialOutput.innerHTML = '<span class="serial-empty">Waiting for simulation to start...</span>';
         isMotionDetected = false;
-        
+
         // Change image to sim_off
         if (circuitImg) {
             circuitImg.src = 'sim_off.png';
+        }
+
+        // Hide detection zone
+        if (detectionZone) {
+            detectionZone.classList.remove('active');
         }
     }
 }
@@ -95,13 +100,13 @@ function init() {
     workbench = document.getElementById('workbench');
     startBtn = document.getElementById('startBtn');
     circuitImg = document.getElementById('circuitImg');
-    
+
     // Set up dragging
     setupDragging();
-    
+
     // Center person initially
     centerPerson();
-    
+
     // Start motion detection loop
     setInterval(checkMotionDetection, 100);
 }
@@ -110,11 +115,11 @@ function init() {
 function setupCodeEditor() {
     const codeContent = document.getElementById('code-content');
     const lineNumbers = document.getElementById('line-numbers');
-    
+
     // Apply syntax highlighting
     const highlighted = syntaxHighlight(arduinoCode);
     codeContent.innerHTML = highlighted;
-    
+
     // Generate line numbers
     const lines = arduinoCode.split('\n');
     lineNumbers.innerHTML = lines.map((_, i) => `<div>${i + 1}</div>`).join('');
@@ -137,7 +142,7 @@ function syntaxHighlight(code) {
 function createArduinoBoard() {
     const container = document.getElementById('arduino');
     const ledOn = isMotionDetected;
-    
+
     container.innerHTML = `
         <div style="position: relative; width: 280px; height: 200px;">
             <div style="position: absolute; inset: 0; border-radius: 8px; background: rgba(0,0,0,0.4); filter: blur(4px); transform: translateY(2px) translateX(1px);"></div>
@@ -173,18 +178,18 @@ function createArduinoBoard() {
                 <!-- Headers Top -->
                 <g transform="translate(60, 10)">
                     <rect x="0" y="0" width="200" height="15" fill="#111827" />
-                    ${Array.from({ length: 14 }).map((_, i) => 
-                        `<rect x="${10 + i * 13.5}" y="3" width="8" height="8" fill="#fbbf24" rx="1" />`
-                    ).join('')}
+                    ${Array.from({ length: 14 }).map((_, i) =>
+        `<rect x="${10 + i * 13.5}" y="3" width="8" height="8" fill="#fbbf24" rx="1" />`
+    ).join('')}
                     <text x="190" y="28" font-size="8" fill="white" font-family="monospace" text-anchor="end">DIGITAL (PWM~)</text>
                 </g>
 
                 <!-- Headers Bottom -->
                 <g transform="translate(60, 175)">
                     <rect x="0" y="0" width="160" height="15" fill="#111827" />
-                    ${Array.from({ length: 12 }).map((_, i) => 
-                        `<rect x="${10 + i * 13}" y="4" width="8" height="8" fill="#fbbf24" rx="1" />`
-                    ).join('')}
+                    ${Array.from({ length: 12 }).map((_, i) =>
+        `<rect x="${10 + i * 13}" y="4" width="8" height="8" fill="#fbbf24" rx="1" />`
+    ).join('')}
                     <text x="10" y="-5" font-size="8" fill="white" font-family="monospace">POWER</text>
                     <text x="100" y="-5" font-size="8" fill="white" font-family="monospace">ANALOG IN</text>
                 </g>
@@ -192,12 +197,12 @@ function createArduinoBoard() {
                 <!-- Microcontroller -->
                 <rect x="120" y="100" width="100" height="30" fill="url(#chip-black)" rx="2" />
                 <text x="170" y="118" font-size="8" fill="#9ca3af" text-anchor="middle" font-family="monospace">ATMEGA328P</text>
-                ${Array.from({ length: 14 }).map((_, i) => 
-                    `<rect x="${125 + i * 6.5}" y="96" width="3" height="4" fill="#d1d5db" />`
-                ).join('')}
-                ${Array.from({ length: 14 }).map((_, i) => 
-                    `<rect x="${125 + i * 6.5}" y="130" width="3" height="4" fill="#d1d5db" />`
-                ).join('')}
+                ${Array.from({ length: 14 }).map((_, i) =>
+        `<rect x="${125 + i * 6.5}" y="96" width="3" height="4" fill="#d1d5db" />`
+    ).join('')}
+                ${Array.from({ length: 14 }).map((_, i) =>
+        `<rect x="${125 + i * 6.5}" y="130" width="3" height="4" fill="#d1d5db" />`
+    ).join('')}
 
                 <!-- Reset Button -->
                 <circle cx="45" cy="25" r="8" fill="#ef4444" stroke="#b91c1c" stroke-width="2" />
@@ -230,7 +235,7 @@ function createArduinoBoard() {
 // Create Breadboard
 function createBreadboard() {
     const container = document.getElementById('breadboard');
-    
+
     container.innerHTML = `
         <div style="position: relative; width: 140px; height: 240px;">
             <div style="position: absolute; inset: 0; border-radius: 4px; background: rgba(0,0,0,0.2); filter: blur(4px); transform: translateY(1px);"></div>
@@ -242,27 +247,27 @@ function createBreadboard() {
                 <div style="position: absolute; top: 0; left: 8px; width: 16px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 8px 0; border-right: 1px solid #eee8d5;">
                     <div style="height: 100%; width: 1px; background: #ef4444; position: absolute; left: 0; top: 0; opacity: 0.5;"></div>
                     <div style="height: 100%; width: 1px; background: #3b82f6; position: absolute; right: 0; top: 0; opacity: 0.5;"></div>
-                    ${Array.from({ length: 20 }).map(() => 
-                        '<div style="width: 6px; height: 6px; background: #d1c4a9; border-radius: 2px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.06); margin: 0 auto;"></div>'
-                    ).join('')}
+                    ${Array.from({ length: 20 }).map(() =>
+        '<div style="width: 6px; height: 6px; background: #d1c4a9; border-radius: 2px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.06); margin: 0 auto;"></div>'
+    ).join('')}
                 </div>
 
                 <!-- Power Rails Right -->
                 <div style="position: absolute; top: 0; right: 8px; width: 16px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 8px 0; border-left: 1px solid #eee8d5;">
                     <div style="height: 100%; width: 1px; background: #ef4444; position: absolute; left: 0; top: 0; opacity: 0.5;"></div>
                     <div style="height: 100%; width: 1px; background: #3b82f6; position: absolute; right: 0; top: 0; opacity: 0.5;"></div>
-                    ${Array.from({ length: 20 }).map(() => 
-                        '<div style="width: 6px; height: 6px; background: #d1c4a9; border-radius: 2px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.06); margin: 0 auto;"></div>'
-                    ).join('')}
+                    ${Array.from({ length: 20 }).map(() =>
+        '<div style="width: 6px; height: 6px; background: #d1c4a9; border-radius: 2px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.06); margin: 0 auto;"></div>'
+    ).join('')}
                 </div>
 
                 <!-- Main Grid -->
                 <div style="position: absolute; top: 8px; left: 32px; width: 48px; height: calc(100% - 16px); display: flex; flex-direction: column; gap: 6px;">
                     ${Array.from({ length: 25 }).map(() => `
                         <div style="display: flex; justify-content: space-between; padding: 0 4px;">
-                            ${Array.from({ length: 5 }).map(() => 
-                                '<div style="width: 6px; height: 6px; background: #d1c4a9; border-radius: 2px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);"></div>'
-                            ).join('')}
+                            ${Array.from({ length: 5 }).map(() =>
+        '<div style="width: 6px; height: 6px; background: #d1c4a9; border-radius: 2px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);"></div>'
+    ).join('')}
                         </div>
                     `).join('')}
                 </div>
@@ -270,9 +275,9 @@ function createBreadboard() {
                 <div style="position: absolute; top: 8px; right: 32px; width: 48px; height: calc(100% - 16px); display: flex; flex-direction: column; gap: 6px;">
                     ${Array.from({ length: 25 }).map(() => `
                         <div style="display: flex; justify-content: space-between; padding: 0 4px;">
-                            ${Array.from({ length: 5 }).map(() => 
-                                '<div style="width: 6px; height: 6px; background: #d1c4a9; border-radius: 2px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);"></div>'
-                            ).join('')}
+                            ${Array.from({ length: 5 }).map(() =>
+        '<div style="width: 6px; height: 6px; background: #d1c4a9; border-radius: 2px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);"></div>'
+    ).join('')}
                         </div>
                     `).join('')}
                 </div>
@@ -284,7 +289,7 @@ function createBreadboard() {
 // Create PIR Sensor
 function createPIRSensor() {
     const container = document.getElementById('pir-sensor');
-    
+
     const sensorHTML = `
         <div style="position: relative; width: 100px; height: 100px;">
             <div style="position: absolute; inset: 0; border-radius: 50%; background: rgba(0,0,0,0.3); filter: blur(4px); transform: translateY(2px) scale(0.9);"></div>
@@ -322,7 +327,7 @@ function createPIRSensor() {
             </div>
         </div>
     `;
-    
+
     container.insertAdjacentHTML('afterbegin', sensorHTML);
 }
 
@@ -342,13 +347,13 @@ function setupDragging() {
         console.error('Draggable elements not found');
         return;
     }
-    
+
     draggablePerson.addEventListener('mousedown', startDrag);
     draggablePerson.addEventListener('touchstart', startDrag);
-    
+
     document.addEventListener('mousemove', drag);
     document.addEventListener('touchmove', drag);
-    
+
     document.addEventListener('mouseup', stopDrag);
     document.addEventListener('touchend', stopDrag);
 }
@@ -366,28 +371,28 @@ function startDrag(e) {
 function drag(e) {
     if (!isDragging || !workbench) return;
     e.preventDefault();
-    
+
     const touch = e.touches ? e.touches[0] : e;
     const workbenchRect = workbench.getBoundingClientRect();
     const personRect = draggablePerson.getBoundingClientRect();
-    
+
     // Calculate new position
     let newX = touch.clientX - workbenchRect.left - dragOffset.x;
     let newY = touch.clientY - workbenchRect.top - dragOffset.y;
-    
+
     // Get person dimensions
     const personWidth = personRect.width;
     const personHeight = personRect.height;
-    
+
     // Apply boundaries - keep person within workbench
     newX = Math.max(0, Math.min(newX, workbenchRect.width - personWidth));
     newY = Math.max(0, Math.min(newY, workbenchRect.height - personHeight));
-    
+
     personPos = {
         x: newX,
         y: newY
     };
-    
+
     updatePersonPosition();
 }
 
@@ -403,29 +408,29 @@ function updatePersonPosition() {
 
 // Motion Detection
 function checkMotionDetection() {
-    if (!pirSensor) return;
-    
+    if (!pirSensor || !isSimulationRunning) return;
+
     const sensorRect = pirSensor.getBoundingClientRect();
     const workbenchRect = workbench.getBoundingClientRect();
-    
+
     const sensorCenter = {
         x: sensorRect.left + sensorRect.width / 2 - workbenchRect.left,
         y: sensorRect.top + sensorRect.height / 2 - workbenchRect.top
     };
-    
+
     const distance = Math.sqrt(
-        Math.pow(personPos.x - sensorCenter.x, 2) + 
+        Math.pow(personPos.x - sensorCenter.x, 2) +
         Math.pow(personPos.y - sensorCenter.y, 2)
     );
-    
+
     // Detection zone radius is 150px (half of 300px diameter)
     // Person icon width is ~64px, so detect when person center is within circle
     const threshold = 150;
     const detected = distance < threshold;
-    
+
     if (detected !== isMotionDetected) {
         isMotionDetected = detected;
-        
+
         // Update image based on detection
         if (circuitImg && isSimulationRunning) {
             if (detected) {
@@ -434,7 +439,7 @@ function checkMotionDetection() {
                 circuitImg.src = 'sim_on.png';
             }
         }
-        
+
         // Update detection zone
         if (detectionZone) {
             if (detected) {
@@ -443,13 +448,13 @@ function checkMotionDetection() {
                 detectionZone.classList.remove('active');
             }
         }
-        
+
         // Add log
         const timestamp = new Date().toLocaleTimeString();
-        const message = detected ? 
-            `[${timestamp}] Motion detected!` : 
+        const message = detected ?
+            `[${timestamp}] Motion detected!` :
             `[${timestamp}] Motion ended!`;
-        
+
         addLog(message);
     }
 }
@@ -457,19 +462,19 @@ function checkMotionDetection() {
 // Add Log to Serial Monitor
 function addLog(message) {
     if (!isSimulationRunning) return;
-    
+
     logs.push(message);
-    
+
     const serialEmpty = serialOutput.querySelector('.serial-empty');
     if (serialEmpty) {
         serialEmpty.remove();
     }
-    
+
     const logDiv = document.createElement('div');
     logDiv.className = 'serial-log';
     logDiv.textContent = message;
     serialOutput.appendChild(logDiv);
-    
+
     // Autoscroll
     serialOutput.scrollTop = serialOutput.scrollHeight;
 }

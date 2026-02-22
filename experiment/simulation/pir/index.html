@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,41 +9,43 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/monokai.min.css" />
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div class="container">
         <!-- Left: Workbench Area -->
         <div class="if-vid">
             <p class="p-head">Interfacing PIR Motion Sensor with Arduino:</p>
             <div id="workbench" class="workbench">
-            <!-- Circuit Diagram -->
-            <div class="interfacing">
-                <img id="circuitImg" src="sim_off.png" alt="PIR Sensor Circuit Diagram" />
-            </div>
-
-            <!-- Hidden PIR Sensor for detection -->
-            <div id="pir-sensor" class="pir-sensor-hidden">
-                <div id="detection-zone" class="detection-zone"></div>
-            </div>
-
-            <!-- Draggable Person -->
-            <div id="draggable-person" class="draggable-person">
-                <div class="person-content">
-                    <!-- Shadow -->
-                    <div class="person-shadow"></div>
-                    <!-- Icon Circle -->
-                    <div class="person-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
-                    </div>
-                    <!-- Label -->
-                    <div class="person-label">Drag Me</div>
+                <!-- Circuit Diagram -->
+                <div class="interfacing">
+                    <img id="circuitImg" src="sim_off.png" alt="PIR Sensor Circuit Diagram" />
                 </div>
-            </div>
+
+                <!-- Hidden PIR Sensor for detection -->
+                <div id="pir-sensor" class="pir-sensor-hidden">
+                    <div id="detection-zone" class="detection-zone"></div>
+                </div>
+
+                <!-- Draggable Person -->
+                <div id="draggable-person" class="draggable-person">
+                    <div class="person-content">
+                        <!-- Shadow -->
+                        <div class="person-shadow"></div>
+                        <!-- Icon Circle -->
+                        <div class="person-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <!-- Label -->
+                        <div class="person-label">Drag Me</div>
+                    </div>
+                </div>
 
             </div>
-            
+
             <!-- Serial Monitor -->
             <div id="serial-monitor" class="serial-monitor">
                 <div class="serial-header">
@@ -69,7 +72,8 @@
                         <h4>Steps to Perform:</h4>
                         <ol>
                             <li>Click <strong>"Start Simulation"</strong> to power up the Arduino circuit</li>
-                            <li>Drag the <strong>person icon</strong> near the PIR sensor to trigger motion detection</li>
+                            <li>Drag the <strong>person icon</strong> near the PIR sensor to trigger motion detection
+                            </li>
                             <li>Observe how the LED turns ON when motion is detected</li>
                             <li>Drag the person away to stop the motion</li>
                             <li>Watch the LED turn OFF when motion ends</li>
@@ -81,8 +85,10 @@
                         <h4>Key Concepts:</h4>
                         <ul>
                             <li><strong>PIR Sensor:</strong> Detects infrared radiation changes from moving objects</li>
-                            <li><strong>Detection Zone:</strong> Area where sensor can detect motion (shown in green)</li>
-                            <li><strong>Digital Input:</strong> Sensor provides HIGH (motion) or LOW (no motion) signal</li>
+                            <li><strong>Detection Zone:</strong> Area where sensor can detect motion (shown in green)
+                            </li>
+                            <li><strong>Digital Input:</strong> Sensor provides HIGH (motion) or LOW (no motion) signal
+                            </li>
                             <li><strong>Digital Output:</strong> Arduino controls LED based on sensor reading</li>
                             <li><strong>digitalRead():</strong> Reads motion sensor state from digital pin 2</li>
                             <li><strong>digitalWrite():</strong> Sets LED pin HIGH (ON) or LOW (OFF)</li>
@@ -154,17 +160,18 @@ void loop() {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/clike/clike.min.js"></script>
     <script src="script.js"></script>
     <script>
-      var editor = CodeMirror.fromTextArea(document.getElementById("arduinoCode"), {
-        mode: "text/x-c++src",
-        theme: "monokai",
-        lineNumbers: true,
-        readOnly: true,
-        lineWrapping: false,
-        matchBrackets: true,
-        indentUnit: 2,
-        tabSize: 2,
-        scrollbarStyle: "native"
-      });
+        var editor = CodeMirror.fromTextArea(document.getElementById("arduinoCode"), {
+            mode: "text/x-c++src",
+            theme: "monokai",
+            lineNumbers: true,
+            readOnly: true,
+            lineWrapping: false,
+            matchBrackets: true,
+            indentUnit: 2,
+            tabSize: 2,
+            scrollbarStyle: "native"
+        });
     </script>
 </body>
+
 </html>
