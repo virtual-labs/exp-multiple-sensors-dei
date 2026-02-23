@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Virtual IoT Lab DEI</title>
+  <link rel="icon" href="https://www.vlab.co.in/images/logo.jpg" type="image/x-icon" />
+  <link rel="stylesheet" type="text/css" href="src/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/monokai.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="if-vid">
+      <p class="p-head">Interfacing MQ135 Sensor with Arduino</p>
+      <div class="interfacing" id="circuit-container">
+        <img id="ifimg" src="./src/images/mq_off.png" alt="Basic Circuit" style="width:100%; height:auto;" />
+        <!-- Smoke layer will be injected here -->
+        <div id="smoke-layer" style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none;">
+        </div>
+      </div>
+
+      <div class="controls-overlay">
+        <button id="smokeBtn" class="smoke-btn" onclick="toggleSmoke();" style="display: none;">
+          💨 Add Smoke
+        </button>
+
+        <div id="sliderWrapper" class="slider-wrapper" style="display: none;">
+          <div class="slider-label">Smoke Intensity</div>
+          <input oninput="updatePollution(this.value)" id="pollutionSlider" type="range" min="0" max="100" value="0"
+            step="1" />
+          <div class="slider-value"><span id="pollutionVal">0</span>%</div>
+          <div id="buzzerWarning" class="buzzer-warning">Threshold: 66%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <div class="instruction-box">
+        <h3 class="box-title">Instructions</h3>
+        <div class="instruction-content">
+          <div class="instruction-section">
+            <h4>Objective:</h4>
+            <p>Learn to use the <strong>MQ135 air quality sensor</strong> to detect harmful gases (CO2, ammonia,
+              benzene, smoke) and display air quality levels with visual indicators (RGB LED) and audio alerts (buzzer).
+            </p>
+          </div>
+
+          <div class="instruction-section">
+            <h4>Steps to Perform:</h4>
+            <ol>
+              <li>Click '<strong>Start Simulation</strong>' to power the circuit</li>
+              <li>Click '<strong>Add Smoke</strong>' to introduce pollutants</li>
+              <li>Use the slider to increase <strong>Smoke Intensity</strong></li>
+              <li>Watch the <strong>Buzzer Warning</strong> indicator near the slider</li>
+              <li>Once level crosses <strong>66%</strong>, the Buzzer will start beeping</li>
+              <li>Click '<strong>Stop Simulation</strong>' to reset the circuit</li>
+            </ol>
+          </div>
+
+          <div class="instruction-section">
+            <h4>Key Concepts:</h4>
+            <ul>
+              <li><strong>MQ135 Sensor</strong>: Connected to <strong>Analog Pin A1</strong>. It detects smoke and
+                gases.</li>
+              <li><strong>Buzzer</strong>: Connected to <strong>Digital Pin 10</strong>. Triggers when pollution is
+                dangerous.</li>
+
+              <li><strong>Threshold Alert</strong>: Code monitors sensor and triggers alarm at > 66%.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-box">
+        <div class="code-box-header">
+          <h3 class="box-title">Arduino Code</h3>
+          <div class="code-actions">
+            <button id="startBtn" class="control-btn start-btn" onclick="changePower();">
+              <span class="play-icon">▶</span> Start Simulation
+            </button>
+          </div>
+        </div>
+        <div class="code-content">
+          <textarea id="arduinoCode" readonly>
+/* 
+  MQ135 Gas Sensor with Buzzer Alert
+  Sensor: Pin A1
+  Buzzer: Pin 10
+*/
+
+#define SENSOR_PIN A1
+#define BUZZER_PIN 10
+#define THRESHOLD 66
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(BUZZER_PIN, OUTPUT);
+}
+
+void loop() {
+  int sensorValue = analogRead(SENSOR_PIN);
+  
+  // Mapping 0-1023 to 0-100%
+  int pollutionLevel = map(sensorValue, 0, 1023, 0, 100);
+  
+  Serial.print("Pollution: ");
+  Serial.print(pollutionLevel);
+  Serial.println("%");
+
+  if (pollutionLevel > THRESHOLD) {
+    tone(BUZZER_PIN, 800); // Beep beep!
+    delay(200);
+    noTone(BUZZER_PIN);
+    delay(200);
+  } else {
+    noTone(BUZZER_PIN);
+  }
+  
+  delay(100);
+}
+            </textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/clike/clike.min.js"></script>
+  <script type="text/javascript" src="src/js/main.js"></script>
+  <script>
+    let editor = CodeMirror.fromTextArea(document.getElementById("arduinoCode"), {
+      mode: "text/x-csrc",
+      theme: "monokai",
+      lineNumbers: true,
+      readOnly: true,
+      lineWrapping: false,
+      scrollbarStyle: "native"
+    });
+  </script>
+</body>
+
+</html>

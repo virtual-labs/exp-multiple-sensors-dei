@@ -1,0 +1,115 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "1. What does PIR stand for?",
+      "answers": {
+        "a": "Passive Infrared",
+        "b": "Primary Internal Resistor",
+        "c": "Peripheral Input Receiver",
+        "d": "Pulse Infra Range"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "2. Which sensor is used for measuring distance?",
+      "answers": {
+        "a": "PIR sensor",
+        "b": "Ultrasonic sensor",
+        "c": "DHT sensor",
+        "d": "MQ135 sensor"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "3. DHT sensor measures which two parameters?",
+      "answers": {
+        "a": "Temperature and humidity",
+        "b": "Pressure and altitude",
+        "c": "Gas levels and dust",
+        "d": "Light intensity and color"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "4. Soil moisture sensor gives which type of output?",
+      "answers": {
+        "a": "Digital only",
+        "b": "Analog only",
+        "c": "Both analog and digital",
+        "d": "PWM only"
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "5. MQ135 sensor is used for detecting ___.",
+      "answers": {
+        "a": "Temperature",
+        "b": "Humidity",
+        "c": "Air quality and gases",
+        "d": "Sound intensity"
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "6. Ultrasonic sensor uses which waves?",
+      "answers": {
+        "a": "Light waves",
+        "b": "Infrared waves",
+        "c": "Microwaves",
+        "d": "High-frequency sound waves"
+      },
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "7. PIR detects motion using which type of radiation?",
+      "answers": {
+        "a": "Ultraviolet radiation",
+        "b": "Visible light",
+        "c": "Infrared radiation",
+        "d": "X-ray radiation"
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "8. DHT sensor communicates through which method?",
+      "answers": {
+        "a": "Digital single-wire protocol",
+        "b": "I2C protocol",
+        "c": "SPI protocol",
+        "d": "UART protocol"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "9. Which sensor is used for air quality detection?",
+      "answers": {
+        "a": "MQ135",
+        "b": "PIR sensor",
+        "c": "Ultrasonic sensor",
+        "d": "DHT sensor"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "10. Soil moisture sensor is useful in which IoT domain?",
+      "answers": {
+        "a": "Smart agriculture",
+        "b": "Smart lighting",
+        "c": "Smart parking",
+        "d": "Home security"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    }
+  ]
+}

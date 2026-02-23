@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultrasonic Sensor with Arduino Virtual Lab</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/monokai.min.css" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Left: Workbench Area -->
+        <div class="if-vid">
+            <p class="p-head">Interfacing Ultrasonic Sensor (HC-SR04) with Arduino:</p>
+            <div id="workbench" class="workbench">
+            <!-- Interfacing Image -->
+            <div class="interfacing">
+                <img id="circuitImg" src="ultrasonic_off.png" alt="Ultrasonic Sensor Circuit" />
+                <canvas id="sensorCanvas" class="sensor-canvas"></canvas>
+            </div>
+            </div>
+            
+            <!-- Serial Monitor -->
+            <div id="serial-monitor" class="serial-monitor">
+                <div class="serial-header">
+                    <span>Serial Monitor (COM3)</span>
+                </div>
+                <div class="serial-output" id="serial-output">
+                    <span class="serial-empty">Waiting for simulation to start...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="right-panel">
+            <!-- Instructions Box -->
+            <div class="instruction-box">
+                <h3 class="box-title">Instructions</h3>
+                <div class="instruction-content">
+                    <div class="instruction-section">
+                        <h4>Objective:</h4>
+                        <p>Learn how an ultrasonic sensor measures distance to objects using sound waves and displays readings on the Serial Monitor.</p>
+                    </div>
+
+                    <div class="instruction-section">
+                        <h4>Steps to Perform:</h4>
+                        <ol>
+                            <li>Click <strong>"Start Simulation"</strong> to power up the Arduino circuit</li>
+                            <li>Drag the <strong>red target object</strong> towards or away from the ultrasonic sensor</li>
+                            <li>Observe the distance measurement displayed on the canvas</li>
+                            <li>When the target is inside the detection zone (green cone), distance is shown</li>
+                            <li>When the target is outside the cone, "No Object Detected" message appears</li>
+                            <li>Check the Serial Monitor for continuous distance readings every second</li>
+                        </ol>
+                    </div>
+
+                    <div class="instruction-section">
+                        <h4>Key Concepts:</h4>
+                        <ul>
+                            <li><strong>Ultrasonic Sensor (HC-SR04):</strong> Measures distance using sound waves (2-400cm range)</li>
+                            <li><strong>Trigger Pin (Pin 10):</strong> Sends ultrasonic pulse (10μs HIGH signal)</li>
+                            <li><strong>Echo Pin (Pin 9):</strong> Receives reflected pulse and measures time</li>
+                            <li><strong>Distance Calculation:</strong> Distance = (Duration × Speed of Sound) / 2</li>
+                            <li><strong>Serial Monitor:</strong> Displays real-time distance measurements in centimeters</li>
+                            <li><strong>pulseIn():</strong> Measures the duration of HIGH pulse on Echo pin</li>
+                            <li><strong>Detection Zone:</strong> Cone-shaped area (±20°) where sensor can detect objects</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Code Box -->
+            <div class="code-box">
+                <div class="code-box-header">
+                    <span class="box-title">Arduino Code - sketch_ultrasonic_sensor.ino</span>
+                    <div class="code-actions">
+                        <button class="control-btn start-btn" id="startBtn" onclick="toggleSimulation()">
+                            <span class="play-icon">▶</span> Start Simulation
+                        </button>
+                    </div>
+                </div>
+                <div class="code-content-wrapper">
+                    <div class="code-content">
+                        <textarea id="arduinoCode" readonly>
+/*
+  Ultrasonic Distance Sensor
+  Measures distance and displays on Serial Monitor
+*/
+
+const int trigPin = 10;         // Trigger pin
+const int echoPin = 9;          // Echo pin
+long duration;
+int distance;
+
+void setup() {
+  pinMode(trigPin, OUTPUT);     // Trigger as output
+  pinMode(echoPin, INPUT);      // Echo as input
+  
+  Serial.begin(9600);           // Start serial communication
+}
+
+void loop() {
+  // Clear the trigger pin
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  
+  // Send 10us pulse to trigger
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  
+  // Read echo pin
+  duration = pulseIn(echoPin, HIGH);
+  
+  // Calculate distance (cm)
+  distance = duration * 0.034 / 2;
+  
+  // Print distance to Serial Monitor
+  Serial.print("Distance: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+  
+  delay(500);  // Wait 500ms before next reading
+}</textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/clike/clike.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+      var editor = CodeMirror.fromTextArea(document.getElementById("arduinoCode"), {
+        mode: "text/x-c++src",
+        theme: "monokai",
+        lineNumbers: true,
+        readOnly: true,
+        lineWrapping: false,
+        matchBrackets: true,
+        indentUnit: 2,
+        tabSize: 2,
+        scrollbarStyle: "native"
+      });
+    </script>
+</body>
+</html>
